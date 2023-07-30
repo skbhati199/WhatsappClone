@@ -1,5 +1,6 @@
 import { Platform, StyleSheet, Text, View } from "react-native";
 
+import ChatScreen from "./src/screens/ChatScreen";
 import ChatsScreen from "./src/screens/ChatsScreen";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
@@ -25,6 +26,14 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      <Stack.Screen
+          options={{
+            headerShown: false,
+            headerStatusBarHeight: 10,
+          }}
+          name="ChatScren"
+          component={ChatScreen}
+        />
         <Stack.Screen
           options={{
             headerShown: false,
@@ -33,6 +42,7 @@ export default function App() {
           name="ChatsScren"
           component={ChatsScreen}
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );
