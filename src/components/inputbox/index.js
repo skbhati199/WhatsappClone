@@ -1,23 +1,35 @@
 import { AntDesign, MaterialIcons } from "@expo/vector-icons";
-import { StyleSheet, Text, TextInput, View } from "react-native";
-
-import React from "react";
+import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import React, { useState } from "react";
 
 const InputBox = () => {
+  const [newMessage, setNewMessage] = useState("");
+  const onSend = () => {
+    console.log("sending data to backend", newMessage);
+    setNewMessage("");
+  };
   return (
     <View style={styles.container}>
       {/* Icon */}
       <AntDesign name="plus" size={24} color={"royalblue"} />
 
       {/* Text Input */}
-      <TextInput style={styles.input} placeholder="type your message..." />
-
-      <MaterialIcons
-        style={styles.send}
-        name="send"
-        size={24}
-        color={"white"}
+      <TextInput
+        style={styles.input}
+        value={newMessage}
+        onChangeText={setNewMessage}
+        placeholder="type your message..."
       />
+
+      {/* Sending message button */}
+      <Pressable onPress={onSend}>
+        <MaterialIcons
+          style={styles.send}
+          name="send"
+          size={24}
+          color={"white"}
+        />
+      </Pressable>
     </View>
   );
 };
@@ -27,7 +39,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     backgroundColor: "whitesmoke",
     padding: 5,
-    height: '10%',
+    paddingBottom: 20,
     paddingHorizontal: 10,
     alignItems: "center",
   },
