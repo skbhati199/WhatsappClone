@@ -6,12 +6,10 @@ import chats from "../../assets/data/chats.json";
 
 const ChatsScreen = () => {
   return (
-    <SafeAreaView>
-      <FlatList
-        data={chats}
-        renderItem={({ item }) => <ChatListItem key={item.id} chat={item} />}
-      />
-    </SafeAreaView>
+    <FlatList
+      data={chats}
+      renderItem={({ item }) => <ChatListItem key={item.id} chat={item} />}
+    />
   );
 };
 

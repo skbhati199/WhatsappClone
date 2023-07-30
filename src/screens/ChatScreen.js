@@ -7,6 +7,7 @@ import {
   Text,
   View,
 } from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 import InputBox from "../components/inputbox";
 import Message from "../components/Message";
@@ -16,6 +17,11 @@ import bg from "../../assets/images/BG.png";
 import messages from "../../assets/data/messages.json";
 
 const ChatScreen = () => {
+  const route = useRoute();
+  const navigation = useNavigation();
+
+  navigation.setOptions({ title: route.params.name });
+
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
